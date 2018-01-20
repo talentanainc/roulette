@@ -1,0 +1,80 @@
+{
+  "contract_name": "Roulette",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "color",
+          "type": "uint256"
+        },
+        {
+          "name": "betType",
+          "type": "uint256"
+        },
+        {
+          "name": "betNumber",
+          "type": "uint256"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "putBet",
+      "outputs": [],
+      "payable": true,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "spin",
+      "outputs": [
+        {
+          "name": "winner",
+          "type": "address"
+        },
+        {
+          "name": "prize",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "time",
+          "type": "uint256"
+        }
+      ],
+      "name": "betOver",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "winner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "prize",
+          "type": "uint256"
+        }
+      ],
+      "name": "announceWinner",
+      "type": "event"
+    }
+  ],
+  "unlinked_binary": "0x6060604052341561000f57600080fd5b5b6102538061001f6000396000f300606060405263ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416636a4e78918114610048578063f0acd7d51461005e575b600080fd5b61005c6004356024356044356064356100a0565b005b341561006957600080fd5b610071610171565b60405173ffffffffffffffffffffffffffffffffffffffff909216825260208201526040908101905180910390f35b60025460ff16156100b057600080fd5b600081116100bd57600080fd5b60008281526001602052604090819020805473ffffffffffffffffffffffffffffffffffffffff19163373ffffffffffffffffffffffffffffffffffffffff1617905560809051908101604090815285825260208083018690528183018590526060830184905273ffffffffffffffffffffffffffffffffffffffff3316600090815290819052208151815560208201518160010155604082015181600201556060820151600390910155505b5b50505050565b60025460009081908190819060ff16151560011461018e57600080fd5b61019860016101ec565b91506101a46014610201565b60008181526001602090815260408083205473ffffffffffffffffffffffffffffffffffffffff168084529183905290912060039081015491965002935090505b5b50509091565b600081156101f8575060015b5060025b919050565b60006024821115610210575060245b600a82038281151561021e57fe5b0690505b9190505600a165627a7a72305820dff37472386f21e830f0716b08a2d6be7413c0aaccbb97c60034a15b6b67bec40029",
+  "networks": {},
+  "schema_version": "0.0.5",
+  "updated_at": 1516483854538
+}
