@@ -5,7 +5,7 @@ pragma solidity ^0.4.11;
 
     enum Color {Black, Red }   
     enum BetType{Inside,Outside} 
-     
+
     struct Bet{
         //1 for Black, 2 for Red
         uint color;
@@ -43,7 +43,7 @@ pragma solidity ^0.4.11;
     function spin() afterBetOver returns (address winner,uint prize){
         // random color (between 1 and 2)
         // random number between (0 - 36)
-        uint winningColor = randColor(true);
+        //uint winningColor = randColor(true);
         uint winningNumber = randNumber(20);
 
         winner = betsNumber[winningNumber];
