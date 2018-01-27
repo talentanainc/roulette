@@ -58,6 +58,7 @@ pragma solidity ^0.4.11;
     }
 
     function randNumber(uint base) internal returns (uint number){
+        //It is hard to generate a random number, since it will be a differenct one on each node, and we will not get a consensus
         if(base > 36){
             number = 36;
         }
