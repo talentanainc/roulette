@@ -57,11 +57,16 @@ pragma solidity ^0.4.11;
         rc = 2;
     }
 
-    function randNumber(uint base) internal returns (uint number){
+
+    function randNumber(uint base) internal returns (uint number,uint color){
         //It is hard to generate a random number, since it will be a differenct one on each node, and we will not get a consensus
+        //So we will return a number and color based on the base in a tuple
         if(base > 36){
             number = 36;
-        }
+            color = 1;
+        }else{
+        color = 2;
         number = base % (base - 10);
+        }        
     }
 }
