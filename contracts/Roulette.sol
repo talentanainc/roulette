@@ -3,6 +3,7 @@ pragma solidity ^0.4.11;
 
  contract  Roulette {
 
+    address _croupier;
     enum Color {Black, Red }   
     enum BetType{Inside,Outside} 
 
@@ -33,6 +34,15 @@ pragma solidity ^0.4.11;
         _;
     }
 
+    function Roulette() public
+    {
+        _croupier = msg.sender;
+    }
+
+    function () public payable {
+        msg.sender.transfer(msg.value);
+    }
+
     function putBet(uint color,uint betType,uint betNumber,uint amount) beforeBedOver payable {
 
         require(amount > 0);
@@ -44,7 +54,9 @@ pragma solidity ^0.4.11;
         // random color (between 1 and 2)
         // random number between (0 - 36)
         //uint winningColor = randColor(true);
-        uint winningNumber = randNumber(20);
+        uint winningNumber;
+        uint winningColor;
+        (winningNumber,winningColor ) = randNumber(20);
 
         winner = betsNumber[winningNumber];
         prize = bets[winner].amount * 3;
@@ -56,7 +68,6 @@ pragma solidity ^0.4.11;
         }
         rc = 2;
     }
-
 
     function randNumber(uint base) internal returns (uint number,uint color){
         //It is hard to generate a random number, since it will be a differenct one on each node, and we will not get a consensus
