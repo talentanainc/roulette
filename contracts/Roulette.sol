@@ -34,7 +34,7 @@ contract Roulette {
         _;
     }
 
-    function constructor() public {
+    function Constructor() public {
         _croupier = msg.sender;
     }
 
