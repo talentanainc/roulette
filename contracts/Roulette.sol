@@ -1,13 +1,13 @@
-pragma solidity ^0.4.11;
+pragma solidity ^0.4.17;
 
 
- contract  Roulette {
+contract Roulette {
 
     address _croupier;
     enum Color {Black, Red }   
     enum BetType{Inside,Outside} 
 
-    struct Bet{
+    struct Bet {
         //1 for Black, 2 for Red
         uint color;
         //1 for Inside, 2 for Outside
@@ -34,8 +34,7 @@ pragma solidity ^0.4.11;
         _;
     }
 
-    function Roulette() public
-    {
+    function constructor() public {
         _croupier = msg.sender;
     }
 
@@ -43,14 +42,14 @@ pragma solidity ^0.4.11;
         msg.sender.transfer(msg.value);
     }
 
-    function putBet(uint color,uint betType,uint betNumber,uint amount) beforeBedOver payable {
+    function putBet(uint color,uint betType,uint betNumber,uint amount) beforeBedOver public payable {
 
         require(amount > 0);
         betsNumber[betNumber] = msg.sender;
         bets[msg.sender] = Bet (color,betType,betNumber,amount);
     }
 
-    function spin() afterBetOver returns (address winner,uint prize){
+    function spin() afterBetOver internal returns (address winner,uint prize) {
         // random color (between 1 and 2)
         // random number between (0 - 36)
         //uint winningColor = randColor(true);
@@ -62,22 +61,22 @@ pragma solidity ^0.4.11;
         prize = bets[winner].amount * 3;
     }
 
-    function randColor(bool decide) internal  returns (uint rc){        
+    function randColor(bool decide) internal pure returns (uint rc){        
         if(decide){
             rc = 1;
         }
         rc = 2;
     }
 
-    function randNumber(uint base) internal returns (uint number,uint color){
+    function randNumber(uint base) internal pure returns (uint number,uint color){
         //It is hard to generate a random number, since it will be a differenct one on each node, and we will not get a consensus
         //So we will return a number and color based on the base in a tuple
         if(base > 36){
             number = 36;
             color = 1;
         }else{
-        color = 2;
-        number = base % (base - 10);
+            color = 2;
+            number = base % (base - 10);
         }        
     }
 }
